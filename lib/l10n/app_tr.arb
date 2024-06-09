@@ -1,0 +1,16 @@
+{
+    "@home_page": {
+        "@menu": {
+            "accomodation": "Konaklama",
+            "currency_exchange_offices": "Döviz Büroları",
+            "catering": "Yeme İçme",
+            "tourist_attractions": "Turistik Yerler",
+            "transportation": "Ulaşım"
+        },
+        "@footer_buttons": {
+            "open_the_map": "Haritayı Aç",
+            "call_emergency_services": "ACİL DURUMDA 112'Yİ ARA",
+            "settings": "Ayarlar"
+        }
+    }
+}
