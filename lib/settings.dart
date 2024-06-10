@@ -35,7 +35,7 @@ class Settings extends StatelessWidget {
               },
             ),
           ),
-          // Add more settings options here...
+          // yeni ayarlar eklenmesi için işaret
         ],
       ),
     );
