@@ -3,7 +3,9 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'functions.dart';
+
 import 'language_selection.dart';
+import 'settings.dart';
 
 void main() {
   runApp(HomePage());
@@ -17,30 +19,20 @@ class HomePage extends StatefulWidget {
 }
 
 class HomePageState extends State<HomePage> {
+  final GlobalKey<NavigatorState> _navigatorKey = GlobalKey<NavigatorState>();
+  int _current_tab = 0;
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Ebabil',
-      localizationsDelegates: [
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate
-      ],
-      supportedLocales: [
-        const Locale('en'),
-        const Locale('es'),
-        const Locale('fr'),
-        const Locale('tr'),
-        const Locale('ar'),
-        const Locale('ja')
-      ],
       home: Scaffold(
         backgroundColor: Colors.red,
         appBar: AppBar(
-          title: const Text('Ebabil'),
+          backgroundColor: Colors.blueAccent,
+          title: Text('Ebabil'),
           actions: [
             IconButton(
-              icon: const Icon(Icons.remove_red_eye),
+              icon: Icon(Icons.remove_red_eye),
               onPressed: () {
 
               },
@@ -51,36 +43,24 @@ class HomePageState extends State<HomePage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              HomePageButton(AppLocalizations.of(context)!.menu.catering, Icons.restaurant),
-              HomePageButton(AppLocalizations.of(context)!.menu.currency_exchange_offices, Icons.currency_exchange),
-              HomePageButton(AppLocalizations.of(context)!.menu.tourist_attractions, Icons.location_on)
+              HomePageButton('Yeme & İçme', Icons.restaurant),
+              HomePageButton('Döviz Büroları', Icons.attach_money),
+              HomePageButton('Turistik yerler', Icons.location_on),
+              HomePageButton('Konaklama', Icons.bungalow),
+              HomePageButton('Ulaşım', Icons.directions_bus),
+              HomePageButton('Harita', Icons.map),
+              HomePageButton('Ayarlar', Icons.settings)
             ],
           ),
         ),
-        bottomNavigationBar: BottomNavigationBar(
-          items: [
-            BottomNavigationBarItem(
-                icon: const Icon(Icons.map),
-                label: AppLocalizations.of(context)!.footer_buttons.open_the_map
-            ),
-            BottomNavigationBarItem(
-                icon: const Icon(Icons.place),
-                label: AppLocalizations.of(context)!.footer_buttons.places
-            ),
-            BottomNavigationBarItem(
-                icon: const Icon(Icons.directions_bus),
-                label: AppLocalizations.of(context)!.footer_buttons.transportation
-            ),
-          ],
-        ),
         floatingActionButton: FloatingActionButton(
+          backgroundColor: Colors.red[900],
+          child: Icon(Icons.call),
           onPressed: () {
             setState(() {
               CallNumber('112');
             });
-          },
-          child: const Icon(Icons.call),
-          backgroundColor: Colors.red
+          }
         ),
       ),
     );
