@@ -49,7 +49,8 @@ class HomePageState extends State<HomePage> {
               HomePageButton('Konaklama', Icons.bungalow),
               HomePageButton('Ulaşım', Icons.directions_bus),
               HomePageButton('Harita', Icons.map),
-              HomePageButton('Ayarlar', Icons.settings)
+              HomePageButton('Ayarlar', Icons.settings) 
+              // listedeki elementler
             ],
           ),
         ),
@@ -58,7 +59,7 @@ class HomePageState extends State<HomePage> {
           child: Icon(Icons.call),
           onPressed: () {
             setState(() {
-              CallNumber('112');
+              CallNumber('112'); // 112 yi arama butonu
             });
           }
         ),
@@ -75,7 +76,7 @@ class HomePageState extends State<HomePage> {
         children: [
           Icon(icon),
           const SizedBox(width: 8),
-          Text(label)
+          Text(label) //ana sayfa butonu
         ],
       ),
     );
