@@ -32,7 +32,7 @@ class HomePageState extends State<HomePage> {
           title: Text('Ebabil'),
           actions: [
             IconButton(
-              icon: Icon(Icons.remove_red_eye),
+              icon: Icon(Icons.remove_red_eye), //burası üstteki çubuk
               onPressed: () {
 
               },
