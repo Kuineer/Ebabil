@@ -5,7 +5,7 @@ class LanguageSelection extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Choose Your Language')
+        title: Text('Choose Your Language') //üst çubuk
       ),
       body: ListView(
         children: [
