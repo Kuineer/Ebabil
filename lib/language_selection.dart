@@ -43,7 +43,7 @@ class LanguageSelection extends StatelessWidget {
             title: Text('日本語'),
             onTap: () {
 
-            },
+            }, //diller liste halinde verilmiş vaziyette duruyor
           ),
         ],
       ),
