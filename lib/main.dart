@@ -32,7 +32,7 @@ class HomePageState extends State<HomePage> {
           title: Text('Ebabil'),
           actions: [
             IconButton(
-              icon: Icon(Icons.remove_red_eye), //burası üstteki çubuk
+              icon: Icon(Icons.remove_red_eye),
               onPressed: () {
 
               },
@@ -43,31 +43,30 @@ class HomePageState extends State<HomePage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              HomePageButton('Yeme & İçme', Icons.restaurant),
-              HomePageButton('Döviz Büroları', Icons.attach_money),
-              HomePageButton('Turistik yerler', Icons.location_on),
-              HomePageButton('Konaklama', Icons.bungalow),
-              HomePageButton('Ulaşım', Icons.directions_bus),
-              HomePageButton('Harita', Icons.map),
-              HomePageButton('Ayarlar', Icons.settings) 
-              // listedeki elementler
+              HomePageButton('112''Yİ ARA (Sadece acil durumlar)', Icons.phone, 1),
+              HomePageButton('Yeme & İçme', Icons.restaurant, 2),
+              HomePageButton('Döviz Büroları', Icons.attach_money, 3),
+              HomePageButton('Turistik yerler', Icons.location_on, 4),
+              HomePageButton('Konaklama', Icons.bungalow, 5),
+              HomePageButton('Ulaşım', Icons.directions_bus, 6),
+              HomePageButton('Harita', Icons.map, 7),
+              HomePageButton('Ayarlar', Icons.settings, 8)
             ],
           ),
         ),
         floatingActionButton: FloatingActionButton(
-          backgroundColor: Colors.red[900],
           child: Icon(Icons.call),
           onPressed: () {
             setState(() {
-              CallNumber('112'); // 112 yi arama butonu
+              Navigator.push(context, MaterialPageRoute(builder: (context) => Settings()));
             });
-          }
+          },
         ),
       ),
     );
   }
 
-  Widget HomePageButton(String label, IconData icon) {
+  Widget HomePageButton(String label, IconData icon, int id) {
     return ElevatedButton(
       onPressed: () {
 
@@ -76,7 +75,7 @@ class HomePageState extends State<HomePage> {
         children: [
           Icon(icon),
           const SizedBox(width: 8),
-          Text(label) //ana sayfa butonu
+          Text(label)
         ],
       ),
     );
