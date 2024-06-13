@@ -1,83 +1,120 @@
+import 'package:ebabil/main.dart';
+import 'package:ebabil/pages/tourist_attractions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'functions.dart';
 
-import 'language_selection.dart';
-import 'settings.dart';
+import 'pages/accomodation.dart';
+import 'pages/catering.dart';
+import 'pages/language_selection.dart';
+import 'pages/settings.dart';
 
-void main() {
-  runApp(HomePage());
+const double button_sized_box_width = 8;
+
+void main() => runApp(Root());
+
+class Root extends StatelessWidget {
+  const Root({ Key ? key }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(primarySwatch: Colors.lightBlue),
+      home: HomePage(),
+      routes: {
+        'accomodation': (context) => Accomodation(),
+        'catering': (context) => Catering(),
+        'settings': (context) => Settings(),
+        'tourist_attractions': (context) => TouristAttractions()
+      }
+    );
+  }
 }
 
 class HomePage extends StatefulWidget {
-  const HomePage({ Key? key }) : super(key: key);
-
   @override
   State<HomePage> createState() => HomePageState();
 }
 
 class HomePageState extends State<HomePage> {
-  final GlobalKey<NavigatorState> _navigatorKey = GlobalKey<NavigatorState>();
-  int _current_tab = 0;
-
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        backgroundColor: Colors.red,
-        appBar: AppBar(
-          backgroundColor: Colors.blueAccent,
-          title: Text('Ebabil'),
-          actions: [
-            IconButton(
-              icon: Icon(Icons.remove_red_eye),
-              onPressed: () {
+    return Directionality(
+      textDirection: TextDirection.ltr,
+      child: Localizations(
+        locale: const Locale('en', 'US'),
+        delegates: const <LocalizationsDelegate<dynamic>>[
+          DefaultWidgetsLocalizations.delegate,
+          DefaultMaterialLocalizations.delegate,
+        ],
+        child: Scaffold(
+            backgroundColor: Colors.red,
 
-              },
+            appBar: AppBar(
+                backgroundColor: Colors.lightBlue,
+                title: Text('Ebabil',
+                    style: TextStyle(color: Colors.white)
+                ),
+                actions: [
+                  IconButton(
+                      icon: Icon(
+                          Icons.remove_red_eye,
+                        color: Colors.white
+                      ),
+                      onPressed: () {
+
+                      }
+                  )
+                ]
             ),
-          ],
-        ),
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              HomePageButton('112''Yİ ARA (Sadece acil durumlar)', Icons.phone, 1),
-              HomePageButton('Yeme & İçme', Icons.restaurant, 2),
-              HomePageButton('Döviz Büroları', Icons.attach_money, 3),
-              HomePageButton('Turistik yerler', Icons.location_on, 4),
-              HomePageButton('Konaklama', Icons.bungalow, 5),
-              HomePageButton('Ulaşım', Icons.directions_bus, 6),
-              HomePageButton('Harita', Icons.map, 7),
-              HomePageButton('Ayarlar', Icons.settings, 8)
-            ],
-          ),
-        ),
-        floatingActionButton: FloatingActionButton(
-          child: Icon(Icons.call),
-          onPressed: () {
-            setState(() {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => Settings()));
-            });
-          },
-        ),
-      ),
+
+            body: Center(
+                child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      ElevatedButton(
+                          onPressed: () {
+                            CallNumber('112');
+                          },
+                          child: Row(
+                              children: [
+                                Icon(Icons.call),
+                                const SizedBox(width: button_sized_box_width),
+                                Text("112'Yİ ARA (Sadece acil durumlar)")
+                              ]
+                          )
+                      ),
+
+                      NavigationButton('Yeme İçme', Icons.restaurant, 'catering'),
+                      NavigationButton('Döviz Büroları', Icons.currency_exchange, 'settings'),
+                      NavigationButton('Turistik Yerler', Icons.location_on, 'tourist_attractions'),
+                      NavigationButton('Konaklama', Icons.bungalow, 'accomodation'),
+                      NavigationButton('Ulaşım', Icons.directions_bus, 'settings'),
+                      NavigationButton('Harita', Icons.map, 'settings'),
+                      NavigationButton('Ayarlar', Icons.settings, 'settings')
+                    ]
+                )
+            )
+        )
+      )
     );
   }
 
-  Widget HomePageButton(String label, IconData icon, int id) {
+  Widget NavigationButton(String label, IconData icon, String route) {
     return ElevatedButton(
       onPressed: () {
-
+        Navigator.pushNamed(context, route);
       },
       child: Row(
         children: [
           Icon(icon),
-          const SizedBox(width: 8),
+          const SizedBox(width: button_sized_box_width),
           Text(label)
-        ],
-      ),
+        ]
+      )
     );
   }
 }
