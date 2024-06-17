@@ -5,7 +5,7 @@ class LanguageSelection extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Choose Your Language') //üst çubuk
+        title: Text('Choose Your Language')
       ),
       body: ListView(
         children: [
@@ -28,6 +28,12 @@ class LanguageSelection extends StatelessWidget {
             },
           ),
           ListTile(
+            title: Text('Italiano'),
+            onTap: () {
+
+            },
+          ),
+          ListTile(
             title: Text('Türkçe'),
             onTap: () {
 
@@ -43,10 +49,10 @@ class LanguageSelection extends StatelessWidget {
             title: Text('日本語'),
             onTap: () {
 
-            }, //diller liste halinde verilmiş vaziyette duruyor
-          ),
-        ],
-      ),
+            },
+          )
+        ]
+      )
     );
   }
 }
