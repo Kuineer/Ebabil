@@ -14,28 +14,27 @@ class Settings extends StatelessWidget {
             subtitle: Text('Türkçe'),
             trailing: Icon(Icons.chevron_right),
             onTap: () {
-              // dil seçeneği
+              Navigator.pushNamed(context, 'language_selection');
             },
           ),
           ListTile(
             title: Text('Tema'),
             trailing: Switch(
-              value: true, // dark mode/ light mode seçeneği varsayılan lilght
+              value: true,
               onChanged: (bool value) {
-                // dark mode/light mode
+
               },
             ),
           ),
           ListTile(
             title: Text('Bildirimler'),
             trailing: Switch(
-              value: false, // bildirimler ayarı varsayılan kapalı
+              value: false,
               onChanged: (bool value) {
-                // bildirim ayarları
+
               },
             ),
           ),
-          // yeni ayarlar eklenmesi için işaret
         ],
       ),
     );
