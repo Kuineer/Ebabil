@@ -1,17 +1,17 @@
-import 'package:ebabil/main.dart';
-import 'package:ebabil/pages/tourist_attractions.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'functions.dart';
+import 'configurations/functions.dart';
 
 import 'pages/accomodation.dart';
 import 'pages/catering.dart';
 import 'pages/language_selection.dart';
 import 'pages/settings.dart';
+import 'pages/tourist_attractions.dart';
 
-const double button_sized_box_width = 8;
+const double button_sized_box_width = 8; // arb
 
 void main() => runApp(Root());
 
@@ -27,6 +27,7 @@ class Root extends StatelessWidget {
       routes: {
         'accomodation': (context) => Accomodation(),
         'catering': (context) => Catering(),
+        'language_selection': (context) => LanguageSelection(),
         'settings': (context) => Settings(),
         'tourist_attractions': (context) => TouristAttractions()
       }
@@ -88,6 +89,7 @@ class HomePageState extends State<HomePage> {
                           )
                       ),
 
+                      // HomeButton("112'Yİ ARA (Sadece acil durumlar)", Icons.call, CallNumber('112'));
                       NavigationButton('Yeme İçme', Icons.restaurant, 'catering'),
                       NavigationButton('Döviz Büroları', Icons.currency_exchange, 'settings'),
                       NavigationButton('Turistik Yerler', Icons.location_on, 'tourist_attractions'),
@@ -103,10 +105,10 @@ class HomePageState extends State<HomePage> {
     );
   }
 
-  Widget NavigationButton(String label, IconData icon, String route) {
+  Widget HomeButton(String label, IconData icon, Future<Object?> code) {
     return ElevatedButton(
       onPressed: () {
-        Navigator.pushNamed(context, route);
+        code;
       },
       child: Row(
         children: [
@@ -115,6 +117,21 @@ class HomePageState extends State<HomePage> {
           Text(label)
         ]
       )
+    );
+  }
+
+  Widget NavigationButton(String label, IconData icon, String route) {
+    return ElevatedButton(
+        onPressed: () {
+          Navigator.pushNamed(context, route);
+        },
+        child: Row(
+            children: [
+              Icon(icon),
+              const SizedBox(width: button_sized_box_width),
+              Text(label)
+            ]
+        )
     );
   }
 }
