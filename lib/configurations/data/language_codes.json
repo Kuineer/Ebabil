@@ -1,0 +1,36 @@
+{
+  "english": {
+  	"language": "en",
+  	"region": "US"
+  },
+  
+  "english": {
+  	"language": "es",
+  	"region": "ES"
+  },
+  
+  "english": {
+  	"language": "fr",
+  	"region": "FR"
+  },
+  
+  "english": {
+  	"language": "it",
+  	"region": "IT"
+  },
+  
+  "english": {
+  	"language": "tr",
+  	"region": "TR"
+  },
+  
+  "english": {
+  	"language": "ar",
+  	"region": "SA"
+  },
+  
+  "english": {
+  	"language": "ja",
+  	"region": "JP"
+  }
+}

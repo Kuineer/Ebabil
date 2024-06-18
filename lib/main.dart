@@ -11,7 +11,7 @@ import 'pages/language_selection.dart';
 import 'pages/settings.dart';
 import 'pages/tourist_attractions.dart';
 
-const double button_sized_box_width = 8; // arb
+const double button_sized_box_width = 8;
 
 void main() => runApp(Root());
 
