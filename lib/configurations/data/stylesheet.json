@@ -1,9 +1,7 @@
 {
-  "custom_widgets": {
-    "HomeButton": {
-      "sized_box": {
-        "width": 8
-      }
+  "HomeButton": {
+    "SizedBox": {
+      "width": 8
     }
   }
 }

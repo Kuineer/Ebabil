@@ -4,14 +4,11 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'configurations/functions.dart';
-
 import 'pages/accomodation.dart';
 import 'pages/catering.dart';
 import 'pages/language_selection.dart';
 import 'pages/settings.dart';
 import 'pages/tourist_attractions.dart';
-
-const double button_sized_box_width = 8;
 
 void main() => runApp(Root());
 
@@ -41,6 +38,14 @@ class HomePage extends StatefulWidget {
 }
 
 class HomePageState extends State<HomePage> {
+  Map<String, dynamic> stylesheet = {};
+
+  @override
+  void initState() {
+    super.initState();
+    stylesheet = {};
+  }
+
   @override
   Widget build(BuildContext context) {
     return Directionality(
@@ -53,52 +58,64 @@ class HomePageState extends State<HomePage> {
         ],
         child: Scaffold(
             backgroundColor: Colors.red,
-
             appBar: AppBar(
-                backgroundColor: Colors.lightBlue,
-                title: Text('Ebabil',
-                    style: TextStyle(color: Colors.white)
-                ),
-                actions: [
-                  IconButton(
-                      icon: Icon(
-                          Icons.remove_red_eye,
-                        color: Colors.white
-                      ),
-                      onPressed: () {
+              backgroundColor: Colors.lightBlue,
+              title: Text('Ebabil',
+                style: TextStyle(color: Colors.white)
+              ),
+              actions: [
+                IconButton(
+                  icon: Icon(
+                      Icons.remove_red_eye,
+                    color: Colors.white
+                  ),
+                  onPressed: () {
 
-                      }
-                  )
-                ]
+                  }
+                )
+              ]
             ),
 
             body: Center(
-                child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      ElevatedButton(
-                          onPressed: () {
-                            CallNumber('112');
-                          },
-                          child: Row(
-                              children: [
-                                Icon(Icons.call),
-                                const SizedBox(width: button_sized_box_width),
-                                Text("112'Yİ ARA (Sadece acil durumlar)")
-                              ]
-                          )
-                      ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  FutureBuilder(
+                    future: stylesheet as Future<Map<String, dynamic>>?,
+                    builder: (BuildContext context, AsyncSnapshot snapshot) {
+                      if (snapshot.hasData) {
+                        stylesheet = snapshot.data as Map<String, dynamic>;
+                      } else if (snapshot.hasError) {
+                        print("Error loading stylesheet: ${snapshot.error}");
+                      } else {
+                        return CircularProgressIndicator();
+                      }
+                      return Center();
+                    }
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      CallNumber('112');
+                    },
+                    child: Row(
+                      children: [
+                        Icon(Icons.call),
+                        SizedBox(width: stylesheet['HomeButton']['SizedBox']['width']),
+                        Text("112'Yİ ARA (Sadece acil durumlar)")
+                      ]
+                    )
+                  ),
 
-                      // HomeButton("112'Yİ ARA (Sadece acil durumlar)", Icons.call, CallNumber('112'));
-                      NavigationButton('Yeme İçme', Icons.restaurant, 'catering'),
-                      NavigationButton('Döviz Büroları', Icons.currency_exchange, 'settings'),
-                      NavigationButton('Turistik Yerler', Icons.location_on, 'tourist_attractions'),
-                      NavigationButton('Konaklama', Icons.bungalow, 'accomodation'),
-                      NavigationButton('Ulaşım', Icons.directions_bus, 'settings'),
-                      NavigationButton('Harita', Icons.map, 'settings'),
-                      NavigationButton('Ayarlar', Icons.settings, 'settings')
-                    ]
-                )
+                  // HomeButton("112'Yİ ARA (Sadece acil durumlar)", Icons.call, CallNumber('112'));
+                  NavigationButton('Yeme İçme', Icons.restaurant, 'catering'),
+                  NavigationButton('Döviz Büroları', Icons.currency_exchange, 'settings'),
+                  NavigationButton('Turistik Yerler', Icons.location_on, 'tourist_attractions'),
+                  NavigationButton('Konaklama', Icons.bungalow, 'accomodation'),
+                  NavigationButton('Ulaşım', Icons.directions_bus, 'settings'),
+                  NavigationButton('Harita', Icons.map, 'settings'),
+                  NavigationButton('Ayarlar', Icons.settings, 'settings')
+                ]
+              )
             )
         )
       )
@@ -113,7 +130,7 @@ class HomePageState extends State<HomePage> {
       child: Row(
         children: [
           Icon(icon),
-          const SizedBox(width: button_sized_box_width),
+          SizedBox(width: stylesheet['HomeButton']['SizedBox']['width']),
           Text(label)
         ]
       )
@@ -128,7 +145,7 @@ class HomePageState extends State<HomePage> {
         child: Row(
             children: [
               Icon(icon),
-              const SizedBox(width: button_sized_box_width),
+              SizedBox(width: stylesheet['HomeButton']['SizedBox']['width']),
               Text(label)
             ]
         )
