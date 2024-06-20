@@ -60,7 +60,7 @@ class HomePageState extends State<HomePage> {
               actions: [
                 IconButton(
                   icon: Icon(
-                      Icons.remove_red_eye,
+                    Icons.remove_red_eye,
                     color: Colors.white
                   ),
                   onPressed: () {
@@ -74,20 +74,7 @@ class HomePageState extends State<HomePage> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  ElevatedButton(
-                    onPressed: () {
-                      CallNumber('112');
-                    },
-                    child: Row(
-                      children: [
-                        Icon(Icons.call),
-                        SizedBox(width: stylesheet['HomeButton']!['SizedBox']!['width']),
-                        Text("112'Yİ ARA (Sadece acil durumlar)")
-                      ]
-                    )
-                  ),
-
-                  // HomeButton("112'Yİ ARA (Sadece acil durumlar)", Icons.call, CallNumber('112'));
+                  HomeButton("112'Yİ ARA (Sadece acil durumlar)", Icons.call, CallNumber('112')),
                   NavigationButton('Yeme İçme', Icons.restaurant, 'catering'),
                   NavigationButton('Döviz Büroları', Icons.currency_exchange, 'settings'),
                   NavigationButton('Turistik Yerler', Icons.location_on, 'tourist_attractions'),
