@@ -1,9 +1,11 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'configurations/functions.dart';
+import 'configurations/dart_maps/locale_codes.dart';
+import 'configurations/dart_maps/stylesheet.dart';
+
 import 'pages/accomodation.dart';
 import 'pages/catering.dart';
 import 'pages/language_selection.dart';
@@ -38,14 +40,6 @@ class HomePage extends StatefulWidget {
 }
 
 class HomePageState extends State<HomePage> {
-  Map<String, dynamic> stylesheet = {};
-
-  @override
-  void initState() {
-    super.initState();
-    stylesheet = {};
-  }
-
   @override
   Widget build(BuildContext context) {
     return Directionality(
@@ -80,19 +74,6 @@ class HomePageState extends State<HomePage> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  FutureBuilder(
-                    future: stylesheet as Future<Map<String, dynamic>>?,
-                    builder: (BuildContext context, AsyncSnapshot snapshot) {
-                      if (snapshot.hasData) {
-                        stylesheet = snapshot.data as Map<String, dynamic>;
-                      } else if (snapshot.hasError) {
-                        print("Error loading stylesheet: ${snapshot.error}");
-                      } else {
-                        return CircularProgressIndicator();
-                      }
-                      return Center();
-                    }
-                  ),
                   ElevatedButton(
                     onPressed: () {
                       CallNumber('112');
@@ -100,7 +81,7 @@ class HomePageState extends State<HomePage> {
                     child: Row(
                       children: [
                         Icon(Icons.call),
-                        SizedBox(width: stylesheet['HomeButton']['SizedBox']['width']),
+                        SizedBox(width: stylesheet['HomeButton']!['SizedBox']!['width']),
                         Text("112'Yİ ARA (Sadece acil durumlar)")
                       ]
                     )
@@ -130,7 +111,7 @@ class HomePageState extends State<HomePage> {
       child: Row(
         children: [
           Icon(icon),
-          SizedBox(width: stylesheet['HomeButton']['SizedBox']['width']),
+          SizedBox(width: stylesheet['HomeButton']!['SizedBox']!['width']),
           Text(label)
         ]
       )
@@ -145,7 +126,7 @@ class HomePageState extends State<HomePage> {
         child: Row(
             children: [
               Icon(icon),
-              SizedBox(width: stylesheet['HomeButton']['SizedBox']['width']),
+              SizedBox(width: stylesheet['HomeButton']!['SizedBox']!['width']),
               Text(label)
             ]
         )
