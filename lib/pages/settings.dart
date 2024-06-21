@@ -1,11 +1,18 @@
 import 'package:flutter/material.dart';
 
+import '../configurations/dart_maps/stylesheet.dart';
+import '../configurations/functions.dart';
+
 class Settings extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: StylesheetColor(stylesheet['Scaffold']['backgroundColor']),
       appBar: AppBar(
-        title: Text('Ayarlar'),
+          backgroundColor: StylesheetColor(stylesheet['AppBar']['backgroundColor']),
+          title: Text('Settings',
+              style: TextStyle(color: StylesheetColor(stylesheet['AppBar']['title']['style']['color']))
+          )
       ),
       body: ListView(
         children: [

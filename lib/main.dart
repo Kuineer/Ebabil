@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'configurations/functions.dart';
 import 'configurations/dart_maps/locale_codes.dart';
 import 'configurations/dart_maps/stylesheet.dart';
+import 'configurations/functions.dart';
 
 import 'pages/accomodation.dart';
 import 'pages/catering.dart';
@@ -51,17 +51,17 @@ class HomePageState extends State<HomePage> {
           DefaultMaterialLocalizations.delegate,
         ],
         child: Scaffold(
-            backgroundColor: Colors.red,
+            backgroundColor: StylesheetColor(stylesheet['Scaffold']['backgroundColor']),
             appBar: AppBar(
-              backgroundColor: Colors.lightBlue,
+              backgroundColor: StylesheetColor(stylesheet['AppBar']['backgroundColor']),
               title: Text('Ebabil',
-                style: TextStyle(color: Colors.white)
+                style: TextStyle(color: StylesheetColor(stylesheet['AppBar']['title']['style']['color']))
               ),
               actions: [
                 IconButton(
                   icon: Icon(
                     Icons.remove_red_eye,
-                    color: Colors.white
+                    color: StylesheetColor(stylesheet['AppBar']['actions']['icon']['color'])
                   ),
                   onPressed: () {
 
@@ -98,7 +98,7 @@ class HomePageState extends State<HomePage> {
       child: Row(
         children: [
           Icon(icon),
-          SizedBox(width: stylesheet['HomeButton']!['SizedBox']!['width']),
+          SizedBox(width: stylesheet['HomeButton']['SizedBox']['width']),
           Text(label)
         ]
       )
@@ -113,7 +113,7 @@ class HomePageState extends State<HomePage> {
         child: Row(
             children: [
               Icon(icon),
-              SizedBox(width: stylesheet['HomeButton']!['SizedBox']!['width']),
+              SizedBox(width: stylesheet['HomeButton']['SizedBox']['width']),
               Text(label)
             ]
         )

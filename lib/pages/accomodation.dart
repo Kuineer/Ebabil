@@ -1,6 +1,9 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
+import '../configurations/dart_maps/stylesheet.dart';
+import '../configurations/functions.dart';
+
 class Otel {
   final String ad;
   final String aciklama;
@@ -20,8 +23,12 @@ class Accomodation extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: StylesheetColor(stylesheet['Scaffold']['backgroundColor']),
       appBar: AppBar(
-        title: const Text('Konaklama Seçenekleri'),
+          backgroundColor: StylesheetColor(stylesheet['AppBar']['backgroundColor']),
+          title: Text('Konaklama',
+              style: TextStyle(color: StylesheetColor(stylesheet['AppBar']['title']['style']['color']))
+          )
       ),
       body: ListView.builder(
         itemCount: oteller.length,

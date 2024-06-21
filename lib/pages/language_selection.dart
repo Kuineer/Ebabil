@@ -1,12 +1,19 @@
 import 'package:flutter/material.dart';
 
+import '../configurations/dart_maps/stylesheet.dart';
+import '../configurations/functions.dart';
+
 class LanguageSelection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Choose Your Language')
-      ),
+        backgroundColor: StylesheetColor(stylesheet['Scaffold']['backgroundColor']),
+        appBar: AppBar(
+            backgroundColor: StylesheetColor(stylesheet['AppBar']['backgroundColor']),
+            title: Text('Choose Your Language',
+                style: TextStyle(color: StylesheetColor(stylesheet['AppBar']['title']['style']['color']))
+            )
+        ),
       body: ListView(
         children: [
           ListTile(
