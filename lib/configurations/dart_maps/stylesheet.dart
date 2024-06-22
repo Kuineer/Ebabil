@@ -19,14 +19,14 @@ const Map<String, dynamic> stylesheet =
     },
     "actions": {
       "icon": {
-        "color": "white"
+        "color": "white" //ikon rengi
       }
     }
   },
 
   "HomeButton": {
     "SizedBox": {
-      "width": 8.0
+      "width": 8.0 //ana sayfa 
     }
   }
 };
