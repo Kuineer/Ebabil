@@ -19,7 +19,7 @@ const Map<String, dynamic> stylesheet =
     },
     "actions": {
       "icon": {
-        "color": "white" //ikon rengi
+        "color": "white"
       }
     }
   },
