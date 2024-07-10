@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'configurations/dart_maps/locale_codes.dart';
 import 'configurations/dart_maps/stylesheet.dart';
 import 'configurations/functions.dart';
 
@@ -20,6 +19,19 @@ class Root extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+        localizationsDelegates: [
+          GlobalWidgetsLocalizations.delegate,
+          GlobalMaterialLocalizations.delegate,
+        ],
+        supportedLocales: [
+          Locale('en', 'US'),
+          Locale('es', 'ES'),
+          Locale('fr', 'FR'),
+          Locale('it', 'IT'),
+          Locale('tr', 'TR'),
+          Locale('ar', 'SA'),
+          Locale('ja', 'JP')
+        ],
       debugShowCheckedModeBanner: false,
       theme: ThemeData(primarySwatch: Colors.lightBlue),
       home: HomePage(),
