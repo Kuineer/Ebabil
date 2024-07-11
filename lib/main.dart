@@ -17,21 +17,34 @@ class Root extends StatelessWidget {
   const Root({ Key ? key }) : super(key: key);
 
   @override
+  void initState() {
+    final Future<bool> is_initialized = IsInitialized();
+
+    if (is_initialized == false) {
+      GenerateDefaultPreferences();
+    } else {
+      SynchronizeDLIfSet();
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        localizationsDelegates: [
-          GlobalWidgetsLocalizations.delegate,
-          GlobalMaterialLocalizations.delegate,
-        ],
-        supportedLocales: [
-          Locale('en', 'US'),
-          Locale('es', 'ES'),
-          Locale('fr', 'FR'),
-          Locale('it', 'IT'),
-          Locale('tr', 'TR'),
-          Locale('ar', 'SA'),
-          Locale('ja', 'JP')
-        ],
+      title: 'Ebabil',
+      localizationsDelegates: [
+        //AppLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalMaterialLocalizations.delegate,
+      ],
+      supportedLocales: [
+        Locale('en', 'US'),
+        Locale('es', 'ES'),
+        Locale('fr', 'FR'),
+        Locale('it', 'IT'),
+        Locale('tr', 'TR'),
+        Locale('ar', 'SA'),
+        Locale('ja', 'JP')
+      ],
       debugShowCheckedModeBanner: false,
       theme: ThemeData(primarySwatch: Colors.lightBlue),
       home: HomePage(),
