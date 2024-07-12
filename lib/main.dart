@@ -17,7 +17,7 @@ class Root extends StatelessWidget {
   const Root({ Key ? key }) : super(key: key);
 
   @override
-  void initState() {
+  void initState() { // nasıl kullanılacağını bilmiyorum
     final Future<bool> is_initialized = IsInitialized();
 
     if (is_initialized == false) {
