@@ -21,4 +21,5 @@ dev_dependencies:
 flutter:
     assets:
         - "locale_data/"
+    generate: true
     uses-material-design: true
