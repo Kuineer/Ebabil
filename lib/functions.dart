@@ -17,7 +17,7 @@ Color StylesheetColor(String code) {
 Future<bool> IsInitialized() async {
   final sp = await SharedPreferences.getInstance();
 
-  final bool? isInitialized = sp.getBool("initialized");
+  final bool? isInitialized = sp.getBool('initialized');
   if (isInitialized == null) {
     return false;
   } else {
@@ -31,12 +31,20 @@ List<String> GetDeviceLocale() {
   return [device_locale.substring(0, 2), device_locale.substring(2, 4)];
 }
 
+Future<List<String>> GetSetLocale() async {
+  final sp = await SharedPreferences.getInstance();
+
+  final locale = sp.getStringList('locale'); //for example ['en', 'US']
+
+  return [locale[0], locale[1]];
+}
+
 void SynchronizeDLIfSet() async {
   final sp = await SharedPreferences.getInstance();
 
   final String device_locale = Platform.localeName;
 
-  if (sp.getString("language") == ["!"]) {
+  if (sp.getString('locale') == ['!']) {
 
   }
 }
@@ -44,8 +52,8 @@ void SynchronizeDLIfSet() async {
 void GenerateDefaultPreferences() async {
   final sp = await SharedPreferences.getInstance();
 
-  sp.setBool("initialized", true);
-  sp.setStringList("language", GetDeviceLocale());
-  sp.setInt("theme", 0);
-  sp.setBool("notifications", true);
+  sp.setBool('initialized', true);
+  sp.setStringList('locale', GetDeviceLocale());
+  sp.setInt('theme', 0);
+  sp.setBool('notifications', true);
 }

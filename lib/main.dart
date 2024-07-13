@@ -1,3 +1,6 @@
+import 'dart:ffi';
+import 'dart:js_interop_unsafe';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
@@ -44,6 +47,7 @@ class RootState extends State<Root> {
     return MaterialApp(
       title: 'Ebabil',
       localizationsDelegates: [
+        //AppLocalizations.delegate,
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate
@@ -77,6 +81,17 @@ class HomePage extends StatefulWidget {
 }
 
 class HomePageState extends State<HomePage> {
+  final locale_fb = FutureBuilder<String>(
+    future: GetSetLocale(),
+      builder: (context, AsyncSnapshot<String> snapshot) {
+        if (snapshot.hasData) {
+          return Text(snapshot.data);
+        } else {
+          return CircularProgressIndicator();
+      }
+    }
+  );
+
   @override
   Widget build(BuildContext context) {
     return Directionality(
