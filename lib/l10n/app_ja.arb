@@ -1,13 +1,13 @@
 {
-    "home_page": {
-        "menu": {
+    "@home_page": {
+        "@menu": {
             "accomodation": "Accomodation",
             "currency_exchange_offices": "Currency Exchange Offices",
-            "catering": "Food & Drinks",
+            "catering": "Food & Beverage",
             "tourist_attractions": "Tourist Attractions",
             "transportation": "Transportation"
         },
-        "footer_buttons": {
+        "@footer_buttons": {
             "open_the_map": "Open the Map",
             "call_emergency_services": "CALL 112 IN CASE OF EMERGENCY",
             "settings": "Settings"

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
-import 'package:ez_localization/ez_localization.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'stylesheet.dart';
@@ -13,18 +13,6 @@ import 'pages/settings.dart';
 import 'pages/tourist_attractions.dart';
 
 void main() => runApp(Root());
-
-EzLocalizationDelegate localization = EzLocalizationDelegate(
-  supportedLocales: [
-    Locale('en', 'US'),
-    Locale('es', 'ES'),
-    Locale('fr', 'FR'),
-    Locale('it', 'IT'),
-    Locale('tr', 'TR'),
-    Locale('ar', 'SA'),
-    Locale('ja', 'JP')
-  ]
-);
 
 class Root extends StatefulWidget {
   const Root({ Key ? key }) : super(key: key);
@@ -55,9 +43,20 @@ class RootState extends State<Root> {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Ebabil',
-      localizationsDelegates: localization.localizationDelegates,
-      supportedLocales: localization.supportedLocales,
-      localeResolutionCallback: localization.localeResolutionCallback,
+      localizationsDelegates: [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate
+      ],
+      supportedLocales: [
+        Locale('en', 'US'),
+        Locale('es', 'ES'),
+        Locale('fr', 'FR'),
+        Locale('it', 'IT'),
+        Locale('tr', 'TR'),
+        Locale('ar', 'SA'),
+        Locale('ja', 'JP')
+      ],
       debugShowCheckedModeBanner: false,
       theme: ThemeData(primarySwatch: Colors.lightBlue),
       home: HomePage(),
@@ -82,42 +81,49 @@ class HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Directionality(
       textDirection: TextDirection.ltr,
-      child: Scaffold(
-        backgroundColor: StylesheetColor(stylesheet['Scaffold']['backgroundColor']),
-        appBar: AppBar(
-          backgroundColor: StylesheetColor(stylesheet['AppBar']['backgroundColor']),
-          title: Text('Ebabil',
-            style: TextStyle(color: StylesheetColor(stylesheet['AppBar']['title']['style']['color']))
-          ),
-          actions: [
-            IconButton(
-              icon: Icon(
-                Icons.remove_red_eye,
-                color: StylesheetColor(stylesheet['AppBar']['actions']['icon']['color'])
-              ),
-              onPressed: () {
+      child: Localizations(
+        locale: const Locale('en', 'US'),
+        delegates: const <LocalizationsDelegate<dynamic>>[
+          DefaultWidgetsLocalizations.delegate,
+          DefaultMaterialLocalizations.delegate,
+        ],
+        child: Scaffold(
+          backgroundColor: StylesheetColor(stylesheet['Scaffold']['backgroundColor']),
+          appBar: AppBar(
+            backgroundColor: StylesheetColor(stylesheet['AppBar']['backgroundColor']),
+            title: Text('Ebabil',
+              style: TextStyle(color: StylesheetColor(stylesheet['AppBar']['title']['style']['color']))
+            ),
+            actions: [
+              IconButton(
+                icon: Icon(
+                  Icons.remove_red_eye,
+                  color: StylesheetColor(stylesheet['AppBar']['actions']['icon']['color'])
+                ),
+                onPressed: () {
 
-              }
-            )
-          ]
-        ),
-
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              HomeButton("112'Yİ ARA (Sadece acil durumlar)", Icons.call, CallNumber('112')),
-              NavigationButton('Yeme İçme', Icons.restaurant, 'catering'),
-              NavigationButton('Döviz Büroları', Icons.currency_exchange, 'settings'),
-              NavigationButton('Turistik Yerler', Icons.location_on, 'tourist_attractions'),
-              NavigationButton('Konaklama', Icons.bungalow, 'accomodation'),
-              NavigationButton('Ulaşım', Icons.directions_bus, 'settings'),
-              NavigationButton('Harita', Icons.map, 'settings'),
-              NavigationButton('Ayarlar', Icons.settings, 'settings')
+                }
+              )
             ]
+          ),
+
+          body: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                HomeButton("112'Yİ ARA (Sadece acil durumlar)", Icons.call, CallNumber('112')),
+                NavigationButton('Yeme İçme', Icons.restaurant, 'catering'),
+                NavigationButton('Döviz Büroları', Icons.currency_exchange, 'settings'),
+                NavigationButton('Turistik Yerler', Icons.location_on, 'tourist_attractions'),
+                NavigationButton('Konaklama', Icons.bungalow, 'accomodation'),
+                NavigationButton('Ulaşım', Icons.directions_bus, 'settings'),
+                NavigationButton('Harita', Icons.map, 'settings'),
+                NavigationButton('Ayarlar', Icons.settings, 'settings')
+              ]
+            )
           )
         )
-      )
+      ),
     );
   }
 

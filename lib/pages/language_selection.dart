@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'package:ez_localization/ez_localization.dart';
-
 import '../stylesheet.dart';
 import '../functions.dart';
 
