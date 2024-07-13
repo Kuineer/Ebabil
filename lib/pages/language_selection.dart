@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_close_app/flutter_close_app.dart';
 
-import '../prefutil.dart';
 import '../functions.dart';
 import '../stylesheet.dart';
 
