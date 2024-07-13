@@ -26,19 +26,29 @@ EzLocalizationDelegate localization = EzLocalizationDelegate(
   ]
 );
 
-class Root extends StatelessWidget {
+class Root extends StatefulWidget {
   const Root({ Key ? key }) : super(key: key);
 
   @override
+  State<Root> createState() => RootState();
+}
+
+class RootState extends State<Root> {
+  @override
   void initState() {
+    super.initState();
     final Future<bool> is_initialized = IsInitialized();
 
-    if (is_initialized == false) {
-      GenerateDefaultPreferences();
-      Navigator.push(context, MaterialPageRoute(builder: (context) => LanguageSelection())); // initstate içinde navigasyon?
-    } else {
-      SynchronizeDLIfSet();
-    }
+    is_initialized.then((value) {
+      if (!value) {
+        GenerateDefaultPreferences();
+        WidgetsBinding.instance.addPostFrameCallback((_) {
+          Navigator.push(context, MaterialPageRoute(builder: (context) => LanguageSelection()));
+        });
+      } else {
+        SynchronizeDLIfSet();
+      }
+    });
   }
 
   @override
