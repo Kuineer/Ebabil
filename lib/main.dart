@@ -6,8 +6,9 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'stylesheet.dart';
+import 'prefutil.dart';
 import 'functions.dart';
+import 'stylesheet.dart';
 
 import 'pages/accomodation.dart';
 import 'pages/catering.dart';
@@ -15,7 +16,14 @@ import 'pages/language_selection.dart';
 import 'pages/settings.dart';
 import 'pages/tourist_attractions.dart';
 
-void main() => runApp(Root());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  PrefUtil.init();
+  runApp(Root());
+}
+
+final language = PrefUtil.getValue('language', 'en') as String;
+final country_code = PrefUtil.getValue('country_code', 'US') as String;
 
 class Root extends StatefulWidget {
   const Root({ Key ? key }) : super(key: key);
@@ -81,23 +89,12 @@ class HomePage extends StatefulWidget {
 }
 
 class HomePageState extends State<HomePage> {
-  final locale_fb = FutureBuilder<String>(
-    future: GetSetLocale(),
-      builder: (context, AsyncSnapshot<String> snapshot) {
-        if (snapshot.hasData) {
-          return Text(snapshot.data);
-        } else {
-          return CircularProgressIndicator();
-      }
-    }
-  );
-
   @override
   Widget build(BuildContext context) {
     return Directionality(
       textDirection: TextDirection.ltr,
       child: Localizations(
-        locale: const Locale('en', 'US'),
+        locale: Locale(language, country_code),
         delegates: const <LocalizationsDelegate<dynamic>>[
           DefaultWidgetsLocalizations.delegate,
           DefaultMaterialLocalizations.delegate,

@@ -22,7 +22,7 @@ class SettingsState extends State<Settings> {
       body: ListView(
         children: [
           ListTile(
-            title: Text('Dil'),
+            title: Text('Dil (Restart Your App to Apply Changes)'),
             subtitle: Text('Türkçe'),
             trailing: Icon(Icons.chevron_right),
             onTap: () {
