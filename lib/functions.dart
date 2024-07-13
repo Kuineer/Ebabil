@@ -1,10 +1,10 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
+
 import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'dart_maps/stylesheet.dart';
+import 'stylesheet.dart';
 
 CallNumber(String number) async {
   await FlutterPhoneDirectCaller.callNumber(number);
@@ -37,7 +37,7 @@ void SynchronizeDLIfSet() async {
   final String device_locale = Platform.localeName;
 
   if (sp.getString("language") == ["!"]) {
-    sp.setStringList("language", ["", ""]);
+
   }
 }
 

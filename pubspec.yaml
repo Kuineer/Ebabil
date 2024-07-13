@@ -7,22 +7,18 @@ environment:
     sdk: '>=3.4.0 <4.0.0'
 
 dependencies:
+    ez_localization: ^1.1.1
     flutter:
         sdk: flutter
-
-    flutter_localizations:
-        sdk: flutter
-
-    intl: any
     flutter_phone_direct_caller: ^2.1.1
     shared_preferences: ^2.2.3
 
 dev_dependencies:
     flutter_test:
         sdk: flutter
-
     flutter_lints: ^3.0.0
 
 flutter:
-    generate: true
+    assets:
+        - "locale_data/"
     uses-material-design: true

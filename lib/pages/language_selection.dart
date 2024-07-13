@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
-import '../configurations/dart_maps/stylesheet.dart';
-import '../configurations/functions.dart';
+import 'package:ez_localization/ez_localization.dart';
+
+import '../stylesheet.dart';
+import '../functions.dart';
 
 class LanguageSelection extends StatelessWidget {
   @override

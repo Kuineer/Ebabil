@@ -1,8 +1,8 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-import '../configurations/dart_maps/stylesheet.dart';
-import '../configurations/functions.dart';
+import '../stylesheet.dart';
+import '../functions.dart';
 
 class Otel {
   final String ad;

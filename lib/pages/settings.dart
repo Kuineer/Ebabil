@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 
-import '../configurations/dart_maps/stylesheet.dart';
-import '../configurations/functions.dart';
+import '../stylesheet.dart';
+import '../functions.dart';
 
-class Settings extends StatelessWidget {
+class Settings extends StatefulWidget {
+  @override
+  State<Settings> createState() => SettingsState();
+}
+
+class SettingsState extends State<Settings> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
