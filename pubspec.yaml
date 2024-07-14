@@ -9,7 +9,6 @@ environment:
 dependencies:
     flutter:
         sdk: flutter
-    flutter_close_app: ^1.0.0
     flutter_localizations:
         sdk: flutter
     flutter_phone_direct_caller: ^2.1.1
