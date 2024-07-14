@@ -16,6 +16,7 @@ import 'pages/tourist_attractions.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   PrefUtil.init();
+
   runApp(Root());
 }
 
