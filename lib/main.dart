@@ -6,6 +6,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import 'functions.dart';
 import 'stylesheet.dart';
+import 'widgets.dart';
 
 import 'pages/accomodation.dart';
 import 'pages/catering.dart';
@@ -22,37 +23,8 @@ void main() {
     country_code = sp.getString('locale_region');
   });
 
-  runApp(Root());
-}
-
-class Root extends StatefulWidget {
-  const Root({ Key ? key }) : super(key: key);
-
-  @override
-  State<Root> createState() => RootState();
-}
-
-class RootState extends State<Root> {
-  @override
-  void initState() {
-    super.initState();
-    final Future<bool> is_initialized = IsInitialized();
-
-    is_initialized.then((value) {
-      if (!value) {
-        GenerateDefaultPreferences();
-        WidgetsBinding.instance.addPostFrameCallback((_) {
-          Navigator.push(context, MaterialPageRoute(builder: (context) => LanguageSelection()));
-        });
-      } else {
-        SynchronizeDLIfSet();
-      }
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
+  runApp(
+    MaterialApp(
       title: 'Ebabil',
       localizationsDelegates: [
         AppLocalizations.delegate,
@@ -71,7 +43,9 @@ class RootState extends State<Root> {
       ],
       debugShowCheckedModeBanner: false,
       theme: ThemeData(primarySwatch: Colors.lightBlue),
+
       home: HomePage(),
+
       routes: {
         'accomodation': (context) => Accomodation(),
         'catering': (context) => Catering(),
@@ -79,8 +53,8 @@ class RootState extends State<Root> {
         'settings': (context) => Settings(),
         'tourist_attractions': (context) => TouristAttractions()
       }
-    );
-  }
+    ),
+  );
 }
 
 class HomePage extends StatefulWidget {
@@ -90,70 +64,57 @@ class HomePage extends StatefulWidget {
 
 class HomePageState extends State<HomePage> {
   @override
+  void initState() {
+    super.initState();
+    final Future<bool> is_initialized = IsInitialized();
+
+    is_initialized.then((value) {
+      if (value == false) {
+        GenerateDefaultPreferences();
+        WidgetsBinding.instance.addPostFrameCallback((_) {
+          Navigator.push(context, MaterialPageRoute(builder: (context) => LanguageSelection()));
+        });
+      } else {
+        SynchronizeDLIfSet();
+      }
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Directionality(
-      textDirection: TextDirection.ltr,
-      child: Localizations(
-        locale: Locale(language, country_code),
-        delegates: const <LocalizationsDelegate<dynamic>>[
-          DefaultWidgetsLocalizations.delegate,
-          DefaultMaterialLocalizations.delegate,
-        ],
-        child: Scaffold(
-          backgroundColor: StylesheetColor(stylesheet['Scaffold']['backgroundColor']),
-          appBar: AppBar(
-            backgroundColor: StylesheetColor(stylesheet['AppBar']['backgroundColor']),
-            title: Text('Ebabil',
-              style: TextStyle(color: StylesheetColor(stylesheet['AppBar']['title']['style']['color']))
+        textDirection: TextDirection.ltr,
+        child: Localizations(
+            locale: Locale(language!, country_code!),
+            delegates: const <LocalizationsDelegate<dynamic>>[
+              DefaultWidgetsLocalizations.delegate,
+              DefaultMaterialLocalizations.delegate,
+            ],
+            child: Scaffold(
+              backgroundColor: StylesheetColor(stylesheet['Scaffold']['backgroundColor']),
+              /*appBar: AppBar(
+                backgroundColor: StylesheetColor(stylesheet['AppBar']['backgroundColor']),
+                title: Text('Ebabil',
+                  style: TextStyle(color: StylesheetColor(stylesheet['AppBar']['title']['style']['color']))
+                )
+              ),*/
+
+              body: Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    HomeButton("112'Yİ ARA (Sadece acil durumlar)", Icons.call, CallNumber('112')),
+                    NavigationButton('Yeme İçme', Icons.restaurant, 'catering', context),
+                    NavigationButton('Döviz Büroları', Icons.currency_exchange, 'settings', context),
+                    NavigationButton('Turistik Yerler', Icons.location_on, 'tourist_attractions', context),
+                    NavigationButton('Konaklama', Icons.bungalow, 'accomodation', context),
+                    NavigationButton('Ulaşım', Icons.directions_bus, 'settings', context),
+                    NavigationButton('Harita', Icons.map, 'settings', context),
+                    NavigationButton('Ayarlar', Icons.settings, 'settings', context)
+                  ]
+                )
+              )
             )
-          ),
-
-          body: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                HomeButton("112'Yİ ARA (Sadece acil durumlar)", Icons.call, CallNumber('112')),
-                NavigationButton('Yeme İçme', Icons.restaurant, 'catering'),
-                NavigationButton('Döviz Büroları', Icons.currency_exchange, 'settings'),
-                NavigationButton('Turistik Yerler', Icons.location_on, 'tourist_attractions'),
-                NavigationButton('Konaklama', Icons.bungalow, 'accomodation'),
-                NavigationButton('Ulaşım', Icons.directions_bus, 'settings'),
-                NavigationButton('Harita', Icons.map, 'settings'),
-                NavigationButton('Ayarlar', Icons.settings, 'settings')
-              ]
-            )
-          )
-        )
-      ),
-    );
-  }
-
-  Widget HomeButton(String label, IconData icon, Future<Object?> code) {
-    return ElevatedButton(
-      onPressed: () {
-        code;
-      },
-      child: Row(
-        children: [
-          Icon(icon),
-          SizedBox(width: stylesheet['HomeButton']['SizedBox']['width']),
-          Text(label)
-        ]
-      )
-    );
-  }
-
-  Widget NavigationButton(String label, IconData icon, String route) {
-    return ElevatedButton(
-        onPressed: () {
-          Navigator.pushNamed(context, route);
-        },
-        child: Row(
-            children: [
-              Icon(icon),
-              SizedBox(width: stylesheet['HomeButton']['SizedBox']['width']),
-              Text(label)
-            ]
         )
     );
   }
