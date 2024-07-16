@@ -103,18 +103,7 @@ class HomePageState extends State<HomePage> {
             backgroundColor: StylesheetColor(stylesheet['AppBar']['backgroundColor']),
             title: Text('Ebabil',
               style: TextStyle(color: StylesheetColor(stylesheet['AppBar']['title']['style']['color']))
-            ),
-            actions: [
-              IconButton(
-                icon: Icon(
-                  Icons.remove_red_eye,
-                  color: StylesheetColor(stylesheet['AppBar']['actions']['icon']['color'])
-                ),
-                onPressed: () {
-
-                }
-              )
-            ]
+            )
           ),
 
           body: Center(
