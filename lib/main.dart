@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_gen/gen_l10n/localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'prefutil.dart';
 import 'functions.dart';
 import 'stylesheet.dart';
 
@@ -14,15 +13,17 @@ import 'pages/language_selection.dart';
 import 'pages/settings.dart';
 import 'pages/tourist_attractions.dart';
 
-void main() async {
+dynamic language, country_code;
+void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  PrefUtil.init();
+
+  SharedPreferences.getInstance().then((sp) {
+    language = sp.getString('language');
+    country_code = sp.getString('locale_region');
+  });
 
   runApp(Root());
 }
-
-final language = PrefUtil.getValue('language', 'en') as String;
-final country_code = PrefUtil.getValue('country_code', 'US') as String;
 
 class Root extends StatefulWidget {
   const Root({ Key ? key }) : super(key: key);
