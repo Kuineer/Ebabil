@@ -103,7 +103,7 @@ class HomePageState extends State<HomePage> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    HomeButton("112'Yİ ARA (Sadece acil durumlar)", Icons.call, CallNumber('112')),
+                    HomeButton(AppLocalizations.of(context)!.home_page('call_emergency_services'), Icons.call, CallNumber('112')),
                     NavigationButton('Yeme İçme', Icons.restaurant, 'catering', context),
                     NavigationButton('Döviz Büroları', Icons.currency_exchange, 'settings', context),
                     NavigationButton('Turistik Yerler', Icons.location_on, 'tourist_attractions', context),
