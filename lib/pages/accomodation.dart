@@ -1,11 +1,8 @@
-import 'dart:ui_web';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/localizations.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
 
-import '../stylesheet.dart';
 import '../functions.dart';
+import '../stylesheet.dart';
 
 class Hotel {
   final String name;

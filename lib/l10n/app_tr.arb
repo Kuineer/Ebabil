@@ -8,6 +8,10 @@
     "call_emergency_services": "ACİL DURUMDA 112'Yİ ARA",
     "settings": "Ayarlar",
 
+    "bus_schedules": "Otobüs Saatleri",
+    "enter_bus_route": "Bir otobüs hattı numarası girin.",
+    "number_entered": "Girilen numara:",
+
     "language": "Dil",
     "theme": "Tema",
     "notifications": "Bildirimler"

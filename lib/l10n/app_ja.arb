@@ -8,6 +8,10 @@
     "call_emergency_services": "CALL 112 IN CASE OF EMERGENCY",
     "settings": "Settings",
 
+    "bus_schedules": "Bus Schedules",
+    "enter_bus_route": "Enter the bus route number.",
+    "number_entered": "Number entered:",
+
     "language": "Language",
     "theme": "Theme",
     "notifications": "Notifications"

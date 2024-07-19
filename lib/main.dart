@@ -8,11 +8,13 @@ import 'functions.dart';
 import 'stylesheet.dart';
 import 'widgets.dart';
 
+import 'pages/language_selection.dart';
 import 'pages/accomodation.dart';
 import 'pages/catering.dart';
-import 'pages/language_selection.dart';
-import 'pages/settings.dart';
 import 'pages/tourist_attractions.dart';
+import 'pages/transportation.dart';
+import 'pages/settings.dart';
+
 
 dynamic language, country_code;
 void main() {
@@ -47,11 +49,12 @@ void main() {
       home: HomePage(),
 
       routes: {
+        'language_selection': (context) => LanguageSelection(),
         'accomodation': (context) => Accomodation(),
         'catering': (context) => Catering(),
-        'language_selection': (context) => LanguageSelection(),
-        'settings': (context) => Settings(),
-        'tourist_attractions': (context) => TouristAttractions()
+        'tourist_attractions': (context) => TouristAttractions(),
+        'transportation': (context) => Transportation(),
+        'settings': (context) => Settings()
       }
     ),
   );
@@ -108,7 +111,7 @@ class HomePageState extends State<HomePage> {
                     NavigationButton(AppLocalizations.of(context)!.currency_exchange_offices, Icons.currency_exchange, 'settings', context),
                     NavigationButton(AppLocalizations.of(context)!.tourist_attractions, Icons.location_on, 'tourist_attractions', context),
                     NavigationButton(AppLocalizations.of(context)!.accomodation, Icons.bungalow, 'accomodation', context),
-                    NavigationButton(AppLocalizations.of(context)!.transportation, Icons.directions_bus, 'settings', context),
+                    NavigationButton(AppLocalizations.of(context)!.transportation, Icons.directions_bus, 'transportation', context),
                     NavigationButton(AppLocalizations.of(context)!.the_map, Icons.map, 'settings', context),
                     NavigationButton(AppLocalizations.of(context)!.settings, Icons.settings, 'settings', context)
                   ]
