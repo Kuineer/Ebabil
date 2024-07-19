@@ -1,20 +1,22 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/localizations.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 import '../stylesheet.dart';
 import '../functions.dart';
 
-class Restoran {
-  final String ad;
-  final String aciklama;
+class Restaurant {
+  final String name;
+  final String description;
 
-  Restoran({required this.ad, required this.aciklama});
+  Restaurant({required this.name, required this.description});
 }
 
 class Catering extends StatelessWidget {
-  final List<Restoran> oteller = [
-    Restoran(ad: 'Leziz Tavuk', aciklama: 'Ucuz tavuk restoranı'),
-    Restoran(ad: 'Pizza Şatosu', aciklama: 'Şehrin merkezinde bir sınırsız pizzacı')
+  final List<Restaurant> restaurants = [
+    Restaurant(name: 'Leziz Tavuk', description: 'Ucuz tavuk restoranı'),
+    Restaurant(name: 'Pizza Şatosu', description: 'Şehrin merkezinde bir sınırsız pizzacı')
   ];
 
   @override
@@ -23,22 +25,17 @@ class Catering extends StatelessWidget {
       backgroundColor: StylesheetColor(stylesheet['Scaffold']['backgroundColor']),
       appBar: AppBar(
           backgroundColor: StylesheetColor(stylesheet['AppBar']['backgroundColor']),
-          title: Text('Yeme İçme',
+          title: Text(AppLocalizations.of(context)!.catering,
               style: TextStyle(color: StylesheetColor(stylesheet['AppBar']['title']['style']['color']))
           )
       ),
       body: ListView.builder(
-        itemCount: oteller.length,
+        itemCount: restaurants.length,
         itemBuilder: (context, index) {
-          final otel = oteller[index];
+          final item = restaurants[index];
           return ListTile(
-            title: Text(otel.ad),
-            subtitle: Text(otel.aciklama),
-            onTap: () {
-              if (kDebugMode) {
-                print('${otel.ad} seçildi.');
-              }
-            },
+            title: Text(item.name),
+            subtitle: Text(item.description)
           );
         },
       ),

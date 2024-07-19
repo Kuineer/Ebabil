@@ -85,7 +85,7 @@ class HomePageState extends State<HomePage> {
     return Directionality(
         textDirection: TextDirection.ltr,
         child: Localizations(
-            locale: Locale(language!, country_code!),
+            locale: Locale(language, country_code),
             delegates: const <LocalizationsDelegate<dynamic>>[
               DefaultWidgetsLocalizations.delegate,
               DefaultMaterialLocalizations.delegate,
@@ -103,14 +103,14 @@ class HomePageState extends State<HomePage> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    HomeButton(AppLocalizations.of(context)!.home_page('call_emergency_services'), Icons.call, CallNumber('112')),
-                    NavigationButton('Yeme İçme', Icons.restaurant, 'catering', context),
-                    NavigationButton('Döviz Büroları', Icons.currency_exchange, 'settings', context),
-                    NavigationButton('Turistik Yerler', Icons.location_on, 'tourist_attractions', context),
-                    NavigationButton('Konaklama', Icons.bungalow, 'accomodation', context),
-                    NavigationButton('Ulaşım', Icons.directions_bus, 'settings', context),
-                    NavigationButton('Harita', Icons.map, 'settings', context),
-                    NavigationButton('Ayarlar', Icons.settings, 'settings', context)
+                    HomeButton(AppLocalizations.of(context)!.call_emergency_services, Icons.call, CallNumber('112')),
+                    NavigationButton(AppLocalizations.of(context)!.catering, Icons.restaurant, 'catering', context),
+                    NavigationButton(AppLocalizations.of(context)!.currency_exchange_offices, Icons.currency_exchange, 'settings', context),
+                    NavigationButton(AppLocalizations.of(context)!.tourist_attractions, Icons.location_on, 'tourist_attractions', context),
+                    NavigationButton(AppLocalizations.of(context)!.accomodation, Icons.bungalow, 'accomodation', context),
+                    NavigationButton(AppLocalizations.of(context)!.transportation, Icons.directions_bus, 'settings', context),
+                    NavigationButton(AppLocalizations.of(context)!.the_map, Icons.map, 'settings', context),
+                    NavigationButton(AppLocalizations.of(context)!.settings, Icons.settings, 'settings', context)
                   ]
                 )
               )

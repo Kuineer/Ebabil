@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/localizations.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 import '../stylesheet.dart';
 import '../functions.dart';
@@ -15,14 +17,14 @@ class SettingsState extends State<Settings> {
       backgroundColor: StylesheetColor(stylesheet['Scaffold']['backgroundColor']),
       appBar: AppBar(
           backgroundColor: StylesheetColor(stylesheet['AppBar']['backgroundColor']),
-          title: Text('Settings',
+          title: Text(AppLocalizations.of(context)!.settings,
               style: TextStyle(color: StylesheetColor(stylesheet['AppBar']['title']['style']['color']))
           )
       ),
       body: ListView(
         children: [
           ListTile(
-            title: Text('Dil (Restart Your App to Apply Changes)'),
+            title: Text(AppLocalizations.of(context)!.language + '(Restart Your App to Apply Changes)'),
             subtitle: Text('Türkçe'),
             trailing: Icon(Icons.chevron_right),
             onTap: () {
@@ -30,7 +32,7 @@ class SettingsState extends State<Settings> {
             },
           ),
           ListTile(
-            title: Text('Tema'),
+            title: Text(AppLocalizations.of(context)!.theme),
             trailing: Switch(
               value: true,
               onChanged: (bool value) {
@@ -39,7 +41,7 @@ class SettingsState extends State<Settings> {
             ),
           ),
           ListTile(
-            title: Text('Bildirimler'),
+            title: Text(AppLocalizations.of(context)!.notifications),
             trailing: Switch(
               value: false,
               onChanged: (bool value) {

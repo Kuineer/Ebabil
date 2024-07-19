@@ -1,16 +1,14 @@
 {
-    "@home_page": {
-        "@menu": {
-            "accomodation": "Accomodation",
-            "currency_exchange_offices": "Currency Exchange Offices",
-            "catering": "Food & Drinks",
-            "tourist_attractions": "Tourist Attractions",
-            "transportation": "Transportation"
-        },
-        "@footer_buttons": {
-            "open_the_map": "Open the Map",
-            "call_emergency_services": "CALL 112 IN CASE OF EMERGENCY",
-            "settings": "Settings"
-        }
-    }
+    "accomodation": "Accomodation",
+    "currency_exchange_offices": "Currency Exchange Offices",
+    "catering": "Catering",
+    "tourist_attractions": "Tourist Attractions",
+    "transportation": "Transportation",
+    "the_map": "The Map",
+    "call_emergency_services": "CALL 112 IN CASE OF EMERGENCY",
+    "settings": "Settings",
+
+    "language": "Language",
+    "theme": "Theme",
+    "notifications": "Notifications"
 }

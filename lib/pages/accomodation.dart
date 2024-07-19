@@ -1,23 +1,26 @@
-import 'package:flutter/foundation.dart';
+import 'dart:ui_web';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/localizations.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 import '../stylesheet.dart';
 import '../functions.dart';
 
-class Otel {
-  final String ad;
-  final String aciklama;
-  final double fiyat;
+class Hotel {
+  final String name;
+  final String description;
+  final double price;
 
-  Otel({required this.ad, required this.aciklama, required this.fiyat});
+  Hotel({required this.name, required this.description, required this.price});
 }
 
 class Accomodation extends StatelessWidget {
-  final List<Otel> oteller = [
-    Otel(ad: 'Grand Hotel', aciklama: 'Lüks bir otel', fiyat: 250),
-    Otel(ad: 'Sunset Resort', aciklama: 'Deniz kenarında tatil köyü', fiyat: 180),
-    Otel(ad: 'Azure Beach Hotel', aciklama: 'Plaj manzaralı', fiyat: 300),
-    Otel(ad:'Ebabil otel', aciklama:'Tatlı bir pansiyon', fiyat:150),
+  final List<Hotel> hotels = [
+    Hotel(name: 'Grand Hotel', description: 'Lüks bir otel', price: 250),
+    Hotel(name: 'Sunset Resort', description: 'Deniz kenarında tatil köyü', price: 180),
+    Hotel(name: 'Azure Beach Hotel', description: 'Plaj manzaralı', price: 300),
+    Hotel(name: 'Ebabil otel', description: 'Tatlı bir pansiyon', price: 150),
   ];
 
   @override
@@ -26,23 +29,18 @@ class Accomodation extends StatelessWidget {
       backgroundColor: StylesheetColor(stylesheet['Scaffold']['backgroundColor']),
       appBar: AppBar(
           backgroundColor: StylesheetColor(stylesheet['AppBar']['backgroundColor']),
-          title: Text('Konaklama',
+          title: Text(AppLocalizations.of(context)!.accomodation,
               style: TextStyle(color: StylesheetColor(stylesheet['AppBar']['title']['style']['color']))
           )
       ),
       body: ListView.builder(
-        itemCount: oteller.length,
+        itemCount: hotels.length,
         itemBuilder: (context, index) {
-          final otel = oteller[index];
+          final item = hotels[index];
           return ListTile(
-            title: Text(otel.ad),
-            subtitle: Text(otel.aciklama),
-            trailing: Text('\$${otel.fiyat.toStringAsFixed(2)}'),
-            onTap: () {
-              if (kDebugMode) {
-                print('${otel.ad} seçildi.');
-              }
-            },
+            title: Text(item.name),
+            subtitle: Text(item.description),
+            trailing: Text('\$${item.price.toStringAsFixed(2)}')
           );
         },
       ),

@@ -1,21 +1,23 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/localizations.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 import '../stylesheet.dart';
 import '../functions.dart';
 
-class Yer {
-  final String ad;
-  final String aciklama;
+class Attraction {
+  final String name;
+  final String description;
   final String district;
 
-  Yer({required this.ad, required this.aciklama, required this.district});
+  Attraction({required this.name, required this.description, required this.district});
 }
 
 class TouristAttractions extends StatelessWidget {
-  final List<Yer> oteller = [
-    Yer(ad: 'Atakule', aciklama: "Ankara'nın komünikasyon ve seyir kulesi.", district: 'Çankaya'),
-    Yer(ad: 'Ankara Castle', aciklama: "Ankara'nın tarihî kalesi.", district: 'Altındağ')
+  final List<Attraction> attractions = [
+    Attraction(name: 'Atakule', description: "Ankara'nın komünikasyon ve seyir kulesi.", district: 'Çankaya'),
+    Attraction(name: 'Ankara Castle', description: "Ankara'nın tarihî kalesi.", district: 'Altındağ')
   ];
 
   @override
@@ -24,23 +26,18 @@ class TouristAttractions extends StatelessWidget {
       backgroundColor: StylesheetColor(stylesheet['Scaffold']['backgroundColor']),
       appBar: AppBar(
           backgroundColor: StylesheetColor(stylesheet['AppBar']['backgroundColor']),
-          title: Text('Turistik Yerler',
+          title: Text(AppLocalizations.of(context)!.tourist_attractions,
               style: TextStyle(color: StylesheetColor(stylesheet['AppBar']['title']['style']['color']))
           )
       ),
       body: ListView.builder(
-        itemCount: oteller.length,
+        itemCount: attractions.length,
         itemBuilder: (context, index) {
-          final otel = oteller[index];
+          final item = attractions[index];
           return ListTile(
-            title: Text(otel.ad),
-            subtitle: Text(otel.aciklama),
-            trailing: Text(otel.district),
-            onTap: () {
-              if (kDebugMode) {
-                print('${otel.ad} seçildi.');
-              }
-            },
+            title: Text(item.name),
+            subtitle: Text(item.description),
+            trailing: Text(item.district)
           );
         },
       ),

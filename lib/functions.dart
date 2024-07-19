@@ -37,7 +37,7 @@ void SynchronizeDLIfSet() async {
   final String device_locale = Platform.localeName;
 
   if (sp.getString('language') == ['!']) {
-
+    sp.setString("language", device_locale);
   }
 }
 
