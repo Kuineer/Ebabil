@@ -17,43 +17,57 @@ class LanguageSelection extends StatelessWidget {
       body: ListView(
         children: [
           ListTile(
-            title: Text('English'),
+            title: Text('English',
+              style: TextStyle(color: StylesheetColor(stylesheet['Text']['style']['color']))
+            ),
             onTap: () {
               SetLocale('en', 'US');
             }
           ),
           ListTile(
-            title: Text('Español'),
+            title: Text('Español',
+                style: TextStyle(color: StylesheetColor(stylesheet['Text']['style']['color']))
+            ),
             onTap: () {
               SetLocale('es', 'SP');
             }
           ),
           ListTile(
-            title: Text('Français'),
+            title: Text('Français',
+                style: TextStyle(color: StylesheetColor(stylesheet['Text']['style']['color']))
+            ),
             onTap: () {
               SetLocale('fr', 'FR');
             }
           ),
           ListTile(
-            title: Text('Italiano'),
+            title: Text('Italiano',
+                style: TextStyle(color: StylesheetColor(stylesheet['Text']['style']['color']))
+            ),
             onTap: () {
               SetLocale('it', 'IT');
             }
           ),
           ListTile(
-            title: Text('Türkçe'),
+            title: Text('Türkçe',
+                style: TextStyle(color: StylesheetColor(stylesheet['Text']['style']['color']))
+            ),
             onTap: () {
               SetLocale('tr', 'TR');
             }
           ),
           ListTile(
-            title: Text('عربي'),
+            title: Text('عربي',
+                style: TextStyle(color: StylesheetColor(stylesheet['Text']['style']['color']))
+            ),
             onTap: () {
               SetLocale('ar', 'SA');
             }
           ),
           ListTile(
-            title: Text('日本語'),
+            title: Text('日本語',
+                style: TextStyle(color: StylesheetColor(stylesheet['Text']['style']['color']))
+            ),
             onTap: () {
               SetLocale('ja', 'JP');
             }

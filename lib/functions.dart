@@ -11,7 +11,7 @@ CallNumber(String number) async {
 }
 
 Color StylesheetColor(String code) {
-  return Color(stylesheet['*colors'][code]);
+  return stylesheet['*colors'][code];
 }
 
 Future<bool> IsInitialized() async {

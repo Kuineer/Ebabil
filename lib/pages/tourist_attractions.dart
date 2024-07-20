@@ -33,9 +33,15 @@ class TouristAttractions extends StatelessWidget {
         itemBuilder: (context, index) {
           final item = attractions[index];
           return ListTile(
-            title: Text(item.name),
-            subtitle: Text(item.description),
-            trailing: Text(item.district)
+            title: Text(item.name,
+              style: TextStyle(color: StylesheetColor(stylesheet['Text']['style']['color']))
+            ),
+            subtitle: Text(item.description,
+              style: TextStyle(color: StylesheetColor(stylesheet['ListTile']['subtitle']['style']['color']))
+            ),
+            trailing: Text(item.district,
+              style: TextStyle(color: StylesheetColor(stylesheet['Text']['style']['color']))
+            )
           );
         },
       ),

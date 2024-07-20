@@ -22,18 +22,22 @@ class Catering extends StatelessWidget {
     return Scaffold(
       backgroundColor: StylesheetColor(stylesheet['Scaffold']['backgroundColor']),
       appBar: AppBar(
-          backgroundColor: StylesheetColor(stylesheet['AppBar']['backgroundColor']),
-          title: Text(AppLocalizations.of(context)!.catering,
-              style: TextStyle(color: StylesheetColor(stylesheet['AppBar']['title']['style']['color']))
-          )
+        backgroundColor: StylesheetColor(stylesheet['AppBar']['backgroundColor']),
+        title: Text(AppLocalizations.of(context)!.catering,
+          style: TextStyle(color: StylesheetColor(stylesheet['AppBar']['title']['style']['color']))
+        )
       ),
       body: ListView.builder(
         itemCount: restaurants.length,
         itemBuilder: (context, index) {
           final item = restaurants[index];
           return ListTile(
-            title: Text(item.name),
-            subtitle: Text(item.description)
+            title: Text(item.name,
+              style: TextStyle(color: StylesheetColor(stylesheet['Text']['style']['color']))
+            ),
+            subtitle: Text(item.description,
+              style: TextStyle(color: StylesheetColor(stylesheet['ListTile']['subtitle']['style']['color']))
+            )
           );
         },
       ),

@@ -3,9 +3,10 @@ import 'package:flutter/cupertino.dart';
 const Map<String, dynamic> stylesheet =
 {
   "*colors": {
-    "bu_red": 3422552319,
-    "dogder_blue": 512819199,
-    "white": 4294967295
+    "bu_red": Color(0xFFCC0000),
+    "light_gray": Color(0xFFE6E6E6),
+    "dogder_blue": Color(0xFF1E90FF),
+    "white": Color(0xFFFFFFFF)
   },
 
   "Scaffold": {
@@ -53,6 +54,14 @@ const Map<String, dynamic> stylesheet =
   "Text": {
     "style": {
       "color": "white"
+    }
+  },
+
+  "ListTile": {
+    "subtitle": {
+      "style": {
+        "color": "light_gray"
+      }
     }
   }
 };

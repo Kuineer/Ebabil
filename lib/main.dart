@@ -15,7 +15,6 @@ import 'pages/tourist_attractions.dart';
 import 'pages/transportation.dart';
 import 'pages/settings.dart';
 
-
 dynamic language, country_code;
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -70,7 +69,6 @@ class HomePageState extends State<HomePage> {
   void initState() {
     super.initState();
     final Future<bool> is_initialized = IsInitialized();
-
     is_initialized.then((value) {
       if (value == false) {
         GenerateDefaultPreferences();
