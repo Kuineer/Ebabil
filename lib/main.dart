@@ -39,6 +39,7 @@ void main() {
         Locale('fr', 'FR'),
         Locale('it', 'IT'),
         Locale('tr', 'TR'),
+        Locale('ru', 'RU'),
         Locale('ar', 'SA'),
         Locale('ja', 'JP')
       ],
@@ -68,8 +69,7 @@ class HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-    final Future<bool> is_initialized = IsInitialized();
-    is_initialized.then((value) {
+    IsInitialized().then((value) {
       if (value == false) {
         GenerateDefaultPreferences();
         WidgetsBinding.instance.addPostFrameCallback((_) {
