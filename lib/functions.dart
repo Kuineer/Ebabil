@@ -34,23 +34,22 @@ List<String> GetDeviceLocale() {
 void SynchronizeDLIfSet() async {
   final sp = await SharedPreferences.getInstance();
 
-  final String device_locale = Platform.localeName;
-
   if (sp.getString('language') == ['!']) {
-    sp.setString("language", device_locale);
+    sp.setString("language", GetDeviceLocale()[0]);
   }
 }
 
 void GenerateDefaultPreferences() async {
+  print('sasas');
   final sp = await SharedPreferences.getInstance();
 
   final device_locale = GetDeviceLocale();
 
-  sp.setBool('initialized', true);
-  sp.setString('language', device_locale[0]);
-  sp.setString('locale_region', device_locale[1]);
-  sp.setInt('theme', 0);
-  sp.setBool('notifications', true);
+  sp.setBool('initialized', true).then((d) => print(d));
+  sp.setString('language', device_locale[0]).then((d) => print(d));
+  sp.setString('locale_region', device_locale[1]).then((d) => print(d));
+  sp.setInt('theme', 0).then((d) => print(d));
+  sp.setBool('notifications', true).then((d) => print(d));
 }
 
 void SetLocale(String language, String country_code) async {

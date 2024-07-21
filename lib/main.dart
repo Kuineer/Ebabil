@@ -86,7 +86,7 @@ class HomePageState extends State<HomePage> {
     return Directionality(
         textDirection: TextDirection.ltr,
         child: Localizations(
-            locale: Locale(language, country_code),
+            locale: Locale('tr', 'TR'),
             delegates: const <LocalizationsDelegate<dynamic>>[
               DefaultWidgetsLocalizations.delegate,
               DefaultMaterialLocalizations.delegate,

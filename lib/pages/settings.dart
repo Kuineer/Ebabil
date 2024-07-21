@@ -37,9 +37,6 @@ class SettingsState extends State<Settings> {
             title: Text(AppLocalizations.of(context)!.language + ' (Restart Your App to Apply Changes)',
                 style: TextStyle(color: StylesheetColor(stylesheet['Text']['style']['color']))
             ),
-            subtitle: Text(language_names[Localizations.localeOf(context).toString()],
-                style: TextStyle(color: StylesheetColor(stylesheet['Text']['style']['color']))
-            ),
             trailing: Icon(Icons.chevron_right),
             onTap: () {
               Navigator.pushNamed(context, 'language_selection');
